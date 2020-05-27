@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.devjpah.appbst.MainActivity">
+    <item
+        android:id="@+id/action_new_tree"
+        android:orderInCategory="1"
+        android:title="@string/action_new_tree"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_inorden"
+        android:orderInCategory="2"
+        android:title="@string/action_inorden"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_preorden"
+        android:orderInCategory="3"
+        android:title="@string/action_preorden"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_postorden"
+        android:orderInCategory="4"
+        android:title="@string/action_postorden"
+        app:showAsAction="never" />
+</menu>
