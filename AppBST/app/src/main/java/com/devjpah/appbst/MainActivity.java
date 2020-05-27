@@ -55,21 +55,25 @@ public class MainActivity extends AppCompatActivity {
                     if (nodos.length < 10) {
                         try {
                             int[] nodosInt = toInt(nodos);
-                            for (int i = 0; i < nodosInt.length; i++) {
-                                int cont = 0;
-                                for (int j = 0; j < nodosInt.length; j++) {
-                                    cont = (nodosInt[i] == nodosInt[j]) ? cont + 1 : cont;
+                            if(validarDigitos(nodosInt)) {
+                                for (int i = 0; i < nodosInt.length; i++) {
+                                    int cont = 0;
+                                    for (int j = 0; j < nodosInt.length; j++) {
+                                        cont = (nodosInt[i] == nodosInt[j]) ? cont + 1 : cont;
+                                    }
+                                    if (cont == 1) {
+                                        tree.Add(nodosInt[i]);
+                                    } else {
+                                        throw new Exception("NO SE PUEDEN INGRESAR DATOS REPETIDOS");
+                                    }
                                 }
-                                if (cont == 1) {
-                                    tree.Add(nodosInt[i]);
-                                } else {
-                                    throw new Exception("NO SE PUEDEN INGRESAR DATOS REPETIDOS");
-                                }
+                                lienzo.resetLienzo();
+                                drawTree();
+                                lienzo.invalidate();
+                                Toasty.success(getApplicationContext(), "NODOS INGRESADOS CORRECTAMENTE", Toasty.LENGTH_SHORT).show();
+                            } else {
+                                throw new Exception("INGRESE VALORES EN EL RANGO 0-99");
                             }
-                            lienzo.resetLienzo();
-                            drawTree();
-                            lienzo.invalidate();
-                            Toasty.success(getApplicationContext(), "NODOS INGRESADOS CORRECTAMENTE", Toasty.LENGTH_SHORT).show();
                         } catch (Exception ex) {
                             Toasty.error(getApplicationContext(), "ERROR: " + ex.getMessage(), Toasty.LENGTH_LONG).show();
                         }
@@ -188,6 +192,16 @@ public class MainActivity extends AppCompatActivity {
         paintLines.setAntiAlias(true);
         paintLines.setStyle(Paint.Style.STROKE);
         paintLines.setStrokeWidth(10);
+    }
+
+    private Boolean validarDigitos(int[] nodos) {
+        for (int i = 0; i < nodos.length; i++) {
+            String value = String.valueOf(nodos[i]);
+            if(value.length() > 2){
+                return false;
+            }
+        }
+        return true;
     }
 
     private void conectar() {
