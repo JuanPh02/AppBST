@@ -142,7 +142,7 @@ public class BinarySearchTree {
     public void Delete(int data) throws Exception{
         if (root == null) {
             throw new Exception("Árbol vacío");
-        } else {
+        }else {
             Delete(data, root);
         }
         nodes--;
