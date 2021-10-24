@@ -31,7 +31,7 @@ public class Lienzo extends View {
     }
 
     private void setupDrawing(){
-//Configuración del area sobre la que pintar
+       //Configuración del area sobre la que pintar
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
